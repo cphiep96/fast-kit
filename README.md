@@ -61,12 +61,12 @@ fast-kit/
 - ✅ Setup cấu trúc dự án (monorepo with Turborepo)
 - ✅ Implement SpecKit MCP server (fully working!)
 
-### Phase 2: Essential Package (In Progress)
+### Phase 2: Essential Package ⚡ 80% DONE
 - ✅ ~~Implement SpecKit MCP server~~ **DONE**
-- 🔄 Implement ContextKit MCP server
-- 🔄 Implement PromptKit MCP server
+- ✅ ~~Implement PromptKit MCP server (23 prompts)~~ **DONE**
+- ✅ ~~Documentation và examples~~ **DONE**
+- 🔄 Implement ContextKit MCP server (Next)
 - ⏳ Tạo Notion templates
-- ⏳ Documentation và examples
 
 ### Phase 3: Professional Package
 - Implement RepoContextKit
@@ -124,22 +124,43 @@ fast-kit/
 
 ## 🎉 What's Working Now
 
-**SpecKit MCP Server** is fully functional and ready to use! You can:
+**SpecKit MCP Server** ✅ **PromptKit MCP Server** ✅ are fully functional and ready to use!
+
+### SpecKit Features:
 - ✅ Create specifications (PRD, RFC, ADR, User Story, API Spec)
 - ✅ Validate specs against schemas
 - ✅ List and search specifications
 - ✅ Export specs to Claude-ready prompts
-- ✅ Integrate with Claude Code immediately
 
-[**→ Get Started in 5 Minutes**](./docs/getting-started.md)
+### PromptKit Features:
+- ✅ **23 production-ready prompts** across 6 categories:
+  - 5 Code Generation prompts (function, API, React, database, algorithm)
+  - 4 Testing prompts (unit, integration, E2E, fixtures)
+  - 3 Debugging prompts (fix bug, performance, async)
+  - 4 Refactoring prompts (refactor, extract, simplify, modernize)
+  - 3 Code Review prompts (PR review, security, performance)
+  - 3 Architecture prompts (system design, API design, patterns)
+  - 1 Documentation prompt
+- ✅ Search and filter prompts by category/tags
+- ✅ Compose prompts with variable substitution
+- ✅ Create custom prompts
+- ✅ Token counting
+
+[**→ Get Started in 5 Minutes**](./QUICK_START.md) | [**→ Full Vietnamese Guide**](./docs/getting-started-vi.md)
 
 ## 📚 Documentation
 
-- [🚀 Getting Started Guide](./docs/getting-started.md) - **Start here!**
+- [⚡ Quick Start (5 min)](./QUICK_START.md) - **Fastest way to start!**
+- [🇻🇳 Hướng Dẫn Tiếng Việt](./docs/getting-started-vi.md) - **Chi tiết với ví dụ thực tế**
+- [🚀 Getting Started Guide (EN)](./docs/getting-started.md)
+- [📋 Prompt Quick Reference](./docs/prompt-quick-reference.md) - **Cheat sheet for all 23 prompts**
+- [🧪 Testing Guide](./docs/testing-promptkit.md) - **10 test scenarios**
+- [⚙️ Configuration Guide](./CLAUDE_CONFIG.md)
+- [✅ Build Success Summary](./BUILD_SUCCESS.md)
 - [📖 Architecture Overview](./docs/architecture.md)
 - [📋 Specification Details](./specs/README.md)
-- [📊 Implementation Progress](./PROGRESS.md)
 - [SpecKit Documentation](./implementations/mcp-servers/spec-kit/README.md)
+- [PromptKit Documentation](./implementations/mcp-servers/prompt-kit/README.md)
 
 ## 🤝 Contributing
 
