@@ -1,0 +1,70 @@
+id: refactor_code
+category: refactoring
+name: Refactor Code
+description: Refactor code to improve readability, maintainability, or performance
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - refactoring
+    - code-quality
+    - clean-code
+
+variables:
+  - name: code
+    type: code
+    description: Code to refactor
+    required: true
+
+  - name: goal
+    type: string
+    description: Refactoring goal
+    required: true
+    validation:
+      allowed_values:
+        - readability
+        - performance
+        - maintainability
+        - simplicity
+        - testability
+
+  - name: keep_behavior
+    type: boolean
+    description: Must preserve existing behavior
+    required: false
+    default: true
+
+template: |
+  # Task: Refactor Code
+
+  ## Original Code
+  ```
+  {{code}}
+  ```
+
+  ## Refactoring Goal
+  Improve: **{{goal}}**
+
+  {{#if keep_behavior}}
+  ⚠️ **Important**: Preserve all existing functionality and behavior
+  {{/if}}
+
+  ## Requirements
+  1. Refactor the code to improve {{goal}}
+  2. Apply relevant design patterns where appropriate
+  3. Follow language best practices
+  4. Maintain or improve performance
+  5. Add comments explaining significant changes
+
+  Please provide:
+  1. Refactored code
+  2. List of specific improvements made
+  3. Before/after comparison of key metrics (if applicable)
+  4. Explanation of design decisions
+
+settings:
+  temperature: 0.3
+  max_tokens: 3000

@@ -1,0 +1,68 @@
+id: add_documentation
+category: documentation
+name: Add Documentation
+description: Generate comprehensive documentation for code
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - documentation
+    - docstrings
+    - comments
+
+variables:
+  - name: code
+    type: code
+    description: Code to document
+    required: true
+
+  - name: doc_style
+    type: string
+    description: Documentation style
+    required: false
+    validation:
+      allowed_values:
+        - jsdoc
+        - pydoc
+        - rustdoc
+        - godoc
+        - javadoc
+
+  - name: include_examples
+    type: boolean
+    description: Include usage examples
+    required: false
+    default: true
+
+template: |
+  # Task: Add Documentation
+
+  ## Code to Document
+  ```
+  {{code}}
+  ```
+
+  ## Requirements
+  1. Add comprehensive documentation following {{#if doc_style}}{{doc_style}}{{else}}language conventions{{/if}}
+  2. Document:
+     - Purpose and functionality
+     - Parameters with types and descriptions
+     - Return values
+     - Exceptions/errors that may be thrown
+     - Important implementation details
+  {{#if include_examples}}
+  3. Include usage examples
+  {{/if}}
+  4. Add inline comments for complex logic
+  5. Keep documentation concise but complete
+
+  Please provide:
+  1. Fully documented code
+  2. Brief explanation of documentation approach
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

@@ -1,0 +1,75 @@
+id: fix_bug
+category: debugging
+name: Fix Bug
+description: Debug and fix a bug based on error description or stack trace
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - debugging
+    - bug-fix
+    - error-handling
+
+variables:
+  - name: code
+    type: code
+    description: The buggy code
+    required: true
+
+  - name: error_description
+    type: string
+    description: Description of the bug or error message
+    required: true
+
+  - name: stack_trace
+    type: string
+    description: Stack trace if available
+    required: false
+
+  - name: expected_behavior
+    type: string
+    description: What should happen
+    required: false
+
+template: |
+  # Task: Debug and Fix Bug
+
+  ## Buggy Code
+  ```
+  {{code}}
+  ```
+
+  ## Error Description
+  {{error_description}}
+
+  {{#if stack_trace}}
+  ## Stack Trace
+  ```
+  {{stack_trace}}
+  ```
+  {{/if}}
+
+  {{#if expected_behavior}}
+  ## Expected Behavior
+  {{expected_behavior}}
+  {{/if}}
+
+  ## Requirements
+  1. Identify the root cause of the bug
+  2. Provide the fixed code
+  3. Explain what was wrong and why the fix works
+  4. Add comments highlighting the changes
+  5. Suggest how to prevent similar bugs in the future
+
+  Please provide:
+  1. Root cause analysis
+  2. Fixed code with changes highlighted
+  3. Explanation of the fix
+  4. Prevention recommendations
+
+settings:
+  temperature: 0.2
+  max_tokens: 2500

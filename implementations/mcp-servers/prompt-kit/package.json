@@ -1,0 +1,45 @@
+{
+  "name": "@fast-kit/prompt-kit",
+  "version": "0.1.0",
+  "description": "PromptKit MCP Server - AI Prompt Library & Engineering System",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "fast-kit-prompt-server": "dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "prompts",
+    "ai",
+    "prompt-engineering",
+    "templates",
+    "claude-code"
+  ],
+  "author": "Fast-Kit Team",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "handlebars": "^4.7.8",
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4",
+    "nanoid": "^5.0.4",
+    "fs-extra": "^11.2.0",
+    "tiktoken": "^1.0.10",
+    "better-sqlite3": "^9.2.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/handlebars": "^4.1.0",
+    "tsx": "^4.7.0"
+  }
+}

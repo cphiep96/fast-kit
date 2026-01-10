@@ -1,0 +1,162 @@
+id: function_creation
+category: code_generation
+name: Create Function
+description: Generate a function implementation from requirements
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - function
+    - implementation
+    - coding
+  model_optimized_for:
+    - claude-3.5-sonnet
+  avg_success_rate: 0.92
+
+variables:
+  - name: function_name
+    type: string
+    description: Name of the function to create
+    required: true
+    validation:
+      pattern: '^[a-zA-Z_][a-zA-Z0-9_]*$'
+      min_length: 2
+
+  - name: purpose
+    type: string
+    description: What the function should do
+    required: true
+    validation:
+      min_length: 10
+
+  - name: language
+    type: string
+    description: Programming language
+    required: true
+    validation:
+      allowed_values:
+        - typescript
+        - python
+        - javascript
+        - rust
+        - go
+        - java
+
+  - name: parameters
+    type: list
+    description: Function parameters
+    required: false
+    default: []
+
+  - name: return_type
+    type: string
+    description: Expected return type
+    required: false
+
+  - name: constraints
+    type: list
+    description: Any constraints or requirements
+    required: false
+
+template: |
+  # Task: Implement `{{function_name}}` function
+
+  ## Purpose
+  {{purpose}}
+
+  ## Specifications
+  - **Language**: {{language}}
+  {{#if parameters}}
+  - **Parameters**:
+  {{#each parameters}}
+    - `{{this.name}}` ({{this.type}}): {{this.description}}
+  {{/each}}
+  {{/if}}
+  {{#if return_type}}
+  - **Returns**: {{return_type}}
+  {{/if}}
+
+  {{#if constraints}}
+  ## Constraints
+  {{#each constraints}}
+  - {{this}}
+  {{/each}}
+  {{/if}}
+
+  ## Requirements
+  1. Implement the function following best practices for {{language}}
+  2. Add appropriate error handling
+  3. Include inline comments for complex logic
+  4. Ensure the code is efficient and readable
+  5. Add type hints/annotations where applicable
+
+  Please provide:
+  1. Complete function implementation
+  2. Brief explanation of key decisions
+  3. Example usage with expected output
+
+examples:
+  - input:
+      function_name: calculateDiscount
+      purpose: Calculate final price after applying discount and tax
+      language: typescript
+      parameters:
+        - name: price
+          type: number
+          description: Original price
+        - name: discountPercent
+          type: number
+          description: Discount percentage (0-100)
+        - name: taxRate
+          type: number
+          description: Tax rate (0-1)
+      return_type: number
+      constraints:
+        - Price must be non-negative
+        - Discount between 0 and 100
+        - Tax rate between 0 and 1
+    output: |
+      ```typescript
+      function calculateDiscount(
+        price: number,
+        discountPercent: number,
+        taxRate: number
+      ): number {
+        // Validate inputs
+        if (price < 0) throw new Error('Price cannot be negative');
+        if (discountPercent < 0 || discountPercent > 100) {
+          throw new Error('Discount must be between 0 and 100');
+        }
+        if (taxRate < 0 || taxRate > 1) {
+          throw new Error('Tax rate must be between 0 and 1');
+        }
+
+        // Calculate discounted price
+        const discountAmount = price * (discountPercent / 100);
+        const priceAfterDiscount = price - discountAmount;
+
+        // Apply tax
+        const finalPrice = priceAfterDiscount * (1 + taxRate);
+
+        return Number(finalPrice.toFixed(2));
+      }
+      ```
+
+      **Key Decisions:**
+      - Added comprehensive input validation for data integrity
+      - Used clear variable names for readability
+      - Rounded to 2 decimal places for currency precision
+
+      **Example Usage:**
+      ```typescript
+      const final = calculateDiscount(100, 20, 0.1);
+      console.log(final); // 88.00
+      // Original: $100, 20% discount = $80, 10% tax = $88
+      ```
+
+settings:
+  temperature: 0.3
+  max_tokens: 2000
