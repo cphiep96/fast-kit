@@ -185,22 +185,22 @@ async function main() {
     try {
       switch (name) {
         case 'list_prompts':
-          return await promptKit.listPrompts(args);
+          return await promptKit.listPrompts(args || {});
 
         case 'get_prompt':
-          return await promptKit.getPrompt(args);
+          return await promptKit.getPrompt(args || {});
 
         case 'compose_prompt':
-          return await promptKit.composePrompt(args);
+          return await promptKit.composePrompt(args || {});
 
         case 'search_prompts':
-          return await promptKit.searchPrompts(args);
+          return await promptKit.searchPrompts(args || {});
 
         case 'create_custom_prompt':
-          return await promptKit.createCustomPrompt(args);
+          return await promptKit.createCustomPrompt(args || {});
 
         case 'track_usage':
-          return await promptKit.trackUsage(args);
+          return await promptKit.trackUsage(args || {});
 
         default:
           throw new Error(`Unknown tool: ${name}`);

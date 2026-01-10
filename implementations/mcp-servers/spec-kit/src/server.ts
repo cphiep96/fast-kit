@@ -123,12 +123,10 @@ const TEMPLATE_SCHEMAS: Record<SpecTemplate, z.ZodSchema> = {
 export class SpecKitServer {
   private storageDir: string;
   private specsDir: string;
-  private templatesDir: string;
 
   constructor(storageDir?: string) {
     this.storageDir = storageDir || path.join(process.env.HOME || '~', '.fast-kit');
     this.specsDir = path.join(this.storageDir, 'specs');
-    this.templatesDir = path.join(__dirname, '../templates');
   }
 
   /**
