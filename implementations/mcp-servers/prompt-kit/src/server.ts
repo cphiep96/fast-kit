@@ -3,8 +3,6 @@ import path from 'path';
 import fs from 'fs-extra';
 import YAML from 'yaml';
 import Handlebars from 'handlebars';
-import Database from 'better-sqlite3';
-import { encoding_for_model } from 'tiktoken';
 
 /**
  * PromptKit Server - Core Business Logic
@@ -67,8 +65,6 @@ export class PromptKitServer {
   private storageDir: string;
   private promptsDir: string;
   private customDir: string;
-  private db: Database.Database | null = null;
-  private encoder: any;
 
   constructor(storageDir?: string) {
     this.storageDir = storageDir || path.join(process.env.HOME || '~', '.fast-kit');
@@ -82,42 +78,6 @@ export class PromptKitServer {
   async initialize(): Promise<void> {
     // Ensure directories
     await fs.ensureDir(this.customDir);
-    await fs.ensureDir(path.join(this.storageDir, 'analytics'));
-
-    // Initialize SQLite database for analytics
-    const dbPath = path.join(this.storageDir, 'analytics', 'prompt-usage.db');
-    this.db = new Database(dbPath);
-
-    // Create tables
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS prompt_usage (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        prompt_id TEXT NOT NULL,
-        timestamp TEXT NOT NULL,
-        variables TEXT,
-        success BOOLEAN,
-        completion_time_ms INTEGER,
-        token_count INTEGER,
-        feedback TEXT
-      );
-
-      CREATE TABLE IF NOT EXISTS prompt_performance (
-        prompt_id TEXT PRIMARY KEY,
-        total_uses INTEGER DEFAULT 0,
-        successful_uses INTEGER DEFAULT 0,
-        avg_completion_time_ms REAL,
-        avg_tokens REAL,
-        last_used TEXT
-      );
-    `);
-
-    // Initialize tiktoken encoder
-    try {
-      this.encoder = encoding_for_model('gpt-4');
-    } catch {
-      // Fallback if tiktoken not available
-      this.encoder = null;
-    }
 
     // Ensure builtin prompts directory exists
     await this.ensureBuiltinPrompts();
@@ -190,8 +150,13 @@ export class PromptKitServer {
       throw new Error(`Prompt not found: ${args.prompt_id}`);
     }
 
-    // Get usage stats
-    const stats = this.getUsageStats(args.prompt_id);
+    // Get usage stats (analytics disabled for now)
+    const stats = {
+      total_uses: 0,
+      successful_uses: 0,
+      avg_completion_time_ms: 0,
+      avg_tokens: 0,
+    };
 
     const response: any = {
       template: prompt,
@@ -247,7 +212,7 @@ export class PromptKitServer {
     const template = Handlebars.compile(prompt.template);
     const rendered = template(args.variables);
 
-    // Count tokens
+    // Count tokens (simple approximation)
     const tokenCount = this.countTokens(rendered);
 
     return {
@@ -372,34 +337,17 @@ export class PromptKitServer {
     completion_time_ms?: number;
     token_count?: number;
   }): Promise<any> {
-    if (!this.db) {
-      throw new Error('Database not initialized');
-    }
-
+    // Analytics disabled - would require better-sqlite3
+    // TODO: Implement lightweight analytics with JSON file storage
     const now = new Date().toISOString();
-
-    // Insert usage record
-    this.db.prepare(`
-      INSERT INTO prompt_usage (prompt_id, timestamp, success, feedback, completion_time_ms, token_count)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `).run(
-      args.prompt_id,
-      now,
-      args.success ? 1 : 0,
-      args.feedback || null,
-      args.completion_time_ms || null,
-      args.token_count || null
-    );
-
-    // Update performance stats
-    this.updatePerformanceStats(args.prompt_id);
 
     return {
       content: [
         {
           type: 'text',
           text: JSON.stringify({
-            tracked: true,
+            tracked: false,
+            message: 'Analytics disabled in this version',
             prompt_id: args.prompt_id,
             timestamp: now,
           }, null, 2),
@@ -496,58 +444,8 @@ export class PromptKitServer {
   }
 
   private countTokens(text: string): number {
-    if (this.encoder) {
-      try {
-        return this.encoder.encode(text).length;
-      } catch {
-        // Fallback
-      }
-    }
     // Simple approximation: ~4 chars per token
     return Math.ceil(text.length / 4);
-  }
-
-  private getUsageStats(prompt_id: string): any {
-    if (!this.db) return null;
-
-    const stats = this.db.prepare(`
-      SELECT * FROM prompt_performance WHERE prompt_id = ?
-    `).get(prompt_id);
-
-    return stats || {
-      total_uses: 0,
-      successful_uses: 0,
-      avg_completion_time_ms: 0,
-      avg_tokens: 0,
-    };
-  }
-
-  private updatePerformanceStats(prompt_id: string): void {
-    if (!this.db) return;
-
-    const stats = this.db.prepare(`
-      SELECT
-        COUNT(*) as total,
-        SUM(CASE WHEN success = 1 THEN 1 ELSE 0 END) as successful,
-        AVG(completion_time_ms) as avg_time,
-        AVG(token_count) as avg_tokens,
-        MAX(timestamp) as last_used
-      FROM prompt_usage
-      WHERE prompt_id = ?
-    `).get(prompt_id) as any;
-
-    this.db.prepare(`
-      INSERT OR REPLACE INTO prompt_performance
-      (prompt_id, total_uses, successful_uses, avg_completion_time_ms, avg_tokens, last_used)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `).run(
-      prompt_id,
-      stats.total,
-      stats.successful,
-      stats.avg_time,
-      stats.avg_tokens,
-      stats.last_used
-    );
   }
 
   private async ensureBuiltinPrompts(): Promise<void> {

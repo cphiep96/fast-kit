@@ -3,7 +3,6 @@ import path from 'path';
 import fs from 'fs-extra';
 import YAML from 'yaml';
 import { z } from 'zod';
-import Ajv from 'ajv';
 
 /**
  * SpecKit Server - Core Business Logic
@@ -428,7 +427,7 @@ export class SpecKitServer {
     return specs;
   }
 
-  private async validateSpecData(spec: SpecData, strict = false): Promise<{
+  private async validateSpecData(spec: SpecData, _strict = false): Promise<{
     valid: boolean;
     completeness: number;
     errors: any[];
@@ -447,7 +446,7 @@ export class SpecKitServer {
     }
 
     // Calculate completeness (simple heuristic)
-    const totalFields = Object.keys(schema.shape || {}).length;
+    const totalFields = schema && 'shape' in schema ? Object.keys((schema as any).shape || {}).length : 0;
     const filledFields = Object.keys(spec.content).length;
     const completeness = totalFields > 0 ? (filledFields / totalFields) * 100 : 100;
 
@@ -474,7 +473,7 @@ export class SpecKitServer {
     return md;
   }
 
-  private generatePrompt(spec: SpecData, includeContext = false): string {
+  private generatePrompt(spec: SpecData, _includeContext = false): string {
     let prompt = `# Task: ${spec.metadata.title}\n\n`;
 
     if (spec.metadata.template === 'prd') {

@@ -175,19 +175,19 @@ async function main() {
     try {
       switch (name) {
         case 'create_spec':
-          return await specKit.createSpec(args || {});
+          return await specKit.createSpec((args || {}) as any);
 
         case 'get_spec':
-          return await specKit.getSpec(args || {});
+          return await specKit.getSpec((args || {}) as any);
 
         case 'list_specs':
-          return await specKit.listSpecs(args || {});
+          return await specKit.listSpecs((args || {}) as any);
 
         case 'validate_spec':
-          return await specKit.validateSpec(args || {});
+          return await specKit.validateSpec((args || {}) as any);
 
         case 'export_to_prompt':
-          return await specKit.exportToPrompt(args || {});
+          return await specKit.exportToPrompt((args || {}) as any);
 
         case 'list_templates':
           return await specKit.listTemplates();
