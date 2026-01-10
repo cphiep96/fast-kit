@@ -1,0 +1,81 @@
+id: integration_test
+category: testing
+name: Create Integration Tests
+description: Generate integration tests for API endpoints or modules
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - testing
+    - integration
+    - api-testing
+
+variables:
+  - name: component_to_test
+    type: string
+    description: What component/endpoint to test
+    required: true
+
+  - name: test_framework
+    type: string
+    description: Testing framework
+    required: false
+    validation:
+      allowed_values:
+        - jest
+        - vitest
+        - mocha
+        - pytest
+        - go-test
+
+  - name: test_scenarios
+    type: list
+    description: Specific scenarios to test
+    required: false
+
+  - name: include_setup
+    type: boolean
+    description: Include test setup/teardown
+    required: false
+    default: true
+
+template: |
+  # Task: Write Integration Tests
+
+  ## Component to Test
+  {{component_to_test}}
+
+  {{#if test_framework}}
+  ## Test Framework
+  {{test_framework}}
+  {{/if}}
+
+  {{#if test_scenarios}}
+  ## Test Scenarios
+  {{#each test_scenarios}}
+  - {{this}}
+  {{/each}}
+  {{/if}}
+
+  ## Requirements
+  1. Write comprehensive integration tests
+  2. Test the interaction between multiple components
+  3. Cover happy path and error scenarios
+  4. {{#if include_setup}}Include proper setup and teardown{{/if}}
+  5. Test with realistic data
+  6. Verify database state changes
+  7. Test API contracts and responses
+  8. Add meaningful test descriptions
+
+  Please provide:
+  1. Complete integration test suite
+  2. Test setup and fixtures
+  3. Mock/stub configurations if needed
+  4. Explanation of test strategy
+
+settings:
+  temperature: 0.4
+  max_tokens: 3000

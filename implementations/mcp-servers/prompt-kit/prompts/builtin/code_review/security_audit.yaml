@@ -1,0 +1,81 @@
+id: security_audit
+category: code_review
+name: Security Audit
+description: Review code for security vulnerabilities and best practices
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - security
+    - audit
+    - vulnerabilities
+
+variables:
+  - name: code
+    type: code
+    description: Code to audit
+    required: true
+
+  - name: code_type
+    type: string
+    description: Type of code
+    required: false
+    validation:
+      allowed_values:
+        - api
+        - authentication
+        - database
+        - file-handling
+        - user-input
+        - general
+
+template: |
+  # Task: Security Audit
+
+  ## Code to Audit
+  ```
+  {{code}}
+  ```
+
+  {{#if code_type}}
+  ## Code Type
+  {{code_type}}
+  {{/if}}
+
+  ## Security Checklist
+
+  ### OWASP Top 10
+  1. **Injection** - SQL, NoSQL, Command injection
+  2. **Broken Authentication** - Session management, password storage
+  3. **Sensitive Data Exposure** - Encryption, secure transmission
+  4. **XML External Entities (XXE)**
+  5. **Broken Access Control** - Authorization, permission checks
+  6. **Security Misconfiguration**
+  7. **Cross-Site Scripting (XSS)**
+  8. **Insecure Deserialization**
+  9. **Using Components with Known Vulnerabilities**
+  10. **Insufficient Logging & Monitoring**
+
+  ### Additional Checks
+  - Input validation and sanitization
+  - Output encoding
+  - CSRF protection
+  - Rate limiting
+  - Secure dependencies
+  - Secrets management
+  - Error handling (no information leakage)
+
+  Please provide:
+  1. List of security vulnerabilities found (if any)
+  2. Severity rating for each issue (Critical, High, Medium, Low)
+  3. Specific code locations with issues
+  4. Recommended fixes for each vulnerability
+  5. Best practice recommendations
+  6. Overall security score
+
+settings:
+  temperature: 0.2
+  max_tokens: 3000

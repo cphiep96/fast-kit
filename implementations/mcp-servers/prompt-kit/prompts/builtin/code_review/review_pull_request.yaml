@@ -1,0 +1,92 @@
+id: review_pull_request
+category: code_review
+name: Review Pull Request
+description: Comprehensive code review for pull requests
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - code-review
+    - pull-request
+    - quality
+
+variables:
+  - name: code_changes
+    type: code
+    description: Code changes in the PR
+    required: true
+
+  - name: pr_description
+    type: string
+    description: PR description and context
+    required: false
+
+  - name: focus_areas
+    type: list
+    description: Specific areas to focus on
+    required: false
+
+template: |
+  # Task: Review Pull Request
+
+  ## Code Changes
+  ```
+  {{code_changes}}
+  ```
+
+  {{#if pr_description}}
+  ## PR Description
+  {{pr_description}}
+  {{/if}}
+
+  {{#if focus_areas}}
+  ## Focus Areas
+  {{#each focus_areas}}
+  - {{this}}
+  {{/each}}
+  {{/if}}
+
+  ## Review Criteria
+  1. **Code Quality**
+     - Readability and maintainability
+     - Following coding standards
+     - Proper naming conventions
+
+  2. **Functionality**
+     - Logic correctness
+     - Edge cases handled
+     - No introduced bugs
+
+  3. **Security**
+     - No security vulnerabilities
+     - Input validation
+     - Secure data handling
+
+  4. **Performance**
+     - No performance regressions
+     - Efficient algorithms
+     - Resource usage
+
+  5. **Testing**
+     - Adequate test coverage
+     - Tests are meaningful
+     - Edge cases tested
+
+  6. **Documentation**
+     - Code is self-documenting
+     - Complex logic explained
+     - API changes documented
+
+  Please provide:
+  1. Overall assessment (Approve / Request Changes / Comment)
+  2. Detailed feedback organized by category
+  3. Specific suggestions for improvements
+  4. Praise for good practices
+  5. Priority of issues (blocker, important, minor, nitpick)
+
+settings:
+  temperature: 0.3
+  max_tokens: 3000

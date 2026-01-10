@@ -76,12 +76,43 @@
   - SQLite analytics database
   - Token counting with tiktoken
 
-#### Built-in Prompts (5/100)
+#### Built-in Prompts (23/100) 🎉
+**Code Generation (5)**:
 - ✅ **function_creation** - Generate function implementations
-- ✅ **unit_test_creation** - Generate comprehensive unit tests
-- ✅ **fix_bug** - Debug and fix bugs with analysis
-- ✅ **refactor_code** - Refactor for quality improvements
-- ✅ **add_documentation** - Generate code documentation
+- ✅ **api_endpoint** - Create REST/GraphQL API endpoints
+- ✅ **react_component** - Generate React components
+- ✅ **database_schema** - Design database schemas
+- ✅ **algorithm_implementation** - Implement algorithms
+
+**Testing (4)**:
+- ✅ **unit_test_creation** - Comprehensive unit tests
+- ✅ **integration_test** - Integration test generation
+- ✅ **e2e_test** - End-to-end tests
+- ✅ **test_fixtures** - Test data and fixtures
+
+**Debugging (3)**:
+- ✅ **fix_bug** - Debug and fix bugs
+- ✅ **analyze_performance** - Performance bottlenecks
+- ✅ **debug_async_issue** - Async/concurrency debugging
+
+**Refactoring (4)**:
+- ✅ **refactor_code** - Quality improvements
+- ✅ **extract_function** - Extract to functions (DRY)
+- ✅ **simplify_logic** - Simplify complex logic
+- ✅ **modernize_code** - Modern language features
+
+**Code Review (3)**:
+- ✅ **review_pull_request** - Comprehensive PR reviews
+- ✅ **security_audit** - Security vulnerability scan
+- ✅ **performance_review** - Performance optimization
+
+**Documentation (1)**:
+- ✅ **add_documentation** - Code documentation
+
+**Architecture (3)**:
+- ✅ **system_design** - High-level architecture
+- ✅ **api_design** - API design
+- ✅ **design_patterns** - Design pattern application
 
 - ✅ `README.md` - Documentation and usage examples
 
@@ -197,7 +228,7 @@ You can also use PromptKit now:
 
 - **Specification Lines**: ~3,500 lines (detailed specs)
 - **Implementation Lines**: ~1,100 lines (2 working MCP servers)
-- **Prompt Templates**: 5 high-quality templates
+- **Prompt Templates**: 23 high-quality templates across 6 categories
 - **Templates Designed**: 5 spec templates (PRD, RFC, ADR, User Story, API)
 - **MCP Tools Implemented**: 12 tools (6 SpecKit + 6 PromptKit)
 - **Test Coverage**: 0% (tests TODO)

@@ -1,0 +1,90 @@
+id: api_design
+category: architecture
+name: API Design
+description: Design a comprehensive API architecture
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - architecture
+    - api
+    - design
+
+variables:
+  - name: api_purpose
+    type: string
+    description: Purpose of the API
+    required: true
+
+  - name: api_type
+    type: string
+    description: API type
+    required: false
+    validation:
+      allowed_values:
+        - REST
+        - GraphQL
+        - gRPC
+        - WebSocket
+
+  - name: resources
+    type: list
+    description: Main resources/entities
+    required: true
+
+  - name: authentication_type
+    type: string
+    description: Authentication method
+    required: false
+    validation:
+      allowed_values:
+        - JWT
+        - OAuth2
+        - API-Key
+        - Session
+
+template: |
+  # Task: API Design
+
+  ## Purpose
+  {{api_purpose}}
+
+  ## API Type
+  {{#if api_type}}{{api_type}}{{else}}REST{{/if}}
+
+  ## Resources
+  {{#each resources}}
+  - {{this}}
+  {{/each}}
+
+  {{#if authentication_type}}
+  ## Authentication
+  {{authentication_type}}
+  {{/if}}
+
+  ## Design Requirements
+  1. **Endpoints** - Define all endpoints with methods and paths
+  2. **Request/Response** - Schema for each endpoint
+  3. **Error Handling** - Standard error response format
+  4. **Versioning** - API versioning strategy
+  5. **Authentication** - Auth flow and token management
+  6. **Rate Limiting** - Throttling strategy
+  7. **Documentation** - OpenAPI/Swagger spec
+  8. **Pagination** - Strategy for list endpoints
+
+  Please provide:
+  1. Complete API specification with all endpoints
+  2. Request/response schemas
+  3. Error codes and messages
+  4. Authentication flow
+  5. Rate limiting rules
+  6. Versioning approach
+  7. OpenAPI/Swagger documentation
+  8. Example API calls
+
+settings:
+  temperature: 0.3
+  max_tokens: 3500

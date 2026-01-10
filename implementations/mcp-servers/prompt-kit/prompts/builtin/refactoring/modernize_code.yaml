@@ -1,0 +1,70 @@
+id: modernize_code
+category: refactoring
+name: Modernize Code
+description: Update code to use modern language features and patterns
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - refactoring
+    - modernization
+    - best-practices
+
+variables:
+  - name: code
+    type: code
+    description: Legacy code to modernize
+    required: true
+
+  - name: language
+    type: string
+    description: Programming language
+    required: true
+    validation:
+      allowed_values:
+        - typescript
+        - javascript
+        - python
+        - rust
+        - go
+
+  - name: target_version
+    type: string
+    description: Target language version (e.g., ES2022, Python 3.11)
+    required: false
+
+template: |
+  # Task: Modernize Code
+
+  ## Legacy Code
+  ```
+  {{code}}
+  ```
+
+  ## Target
+  - **Language**: {{language}}
+  {{#if target_version}}
+  - **Version**: {{target_version}}
+  {{/if}}
+
+  ## Requirements
+  1. Update to modern syntax and features
+  2. Replace deprecated patterns
+  3. Use modern built-in functions
+  4. Apply current best practices
+  5. Improve type safety (if applicable)
+  6. Use async/await instead of callbacks
+  7. Apply modern design patterns
+
+  Please provide:
+  1. Modernized code
+  2. List of modernizations applied
+  3. Benefits of the changes
+  4. Migration notes (if needed)
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

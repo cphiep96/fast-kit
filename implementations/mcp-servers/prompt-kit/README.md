@@ -33,13 +33,13 @@ Add to your Claude Code config (`~/.config/claude/config.json`):
 
 ## 🎯 Features
 
-- ✅ 5+ curated prompt templates (more coming!)
+- ✅ 23 curated prompt templates across 6 categories
 - ✅ Template composition with Handlebars
 - ✅ Variable validation
 - ✅ Usage analytics tracking
 - ✅ Custom prompt creation
 - ✅ Semantic search
-- ⏳ 100+ prompts (in progress)
+- ⏳ More prompts coming (target: 100+)
 - ⏳ Prompt chaining (coming soon)
 
 ## 📦 Available Tools
@@ -112,21 +112,44 @@ Track prompt usage for analytics.
 
 ## 📚 Built-in Prompt Library
 
-### Code Generation
+### Code Generation (5 prompts)
 - **function_creation** - Generate function implementations
-- More coming soon...
+- **api_endpoint** - Create REST/GraphQL API endpoints
+- **react_component** - Generate React components
+- **database_schema** - Design database schemas
+- **algorithm_implementation** - Implement algorithms with optimal complexity
 
-### Testing
+### Testing (4 prompts)
 - **unit_test_creation** - Generate comprehensive unit tests
+- **integration_test** - Create integration tests
+- **e2e_test** - End-to-end test generation
+- **test_fixtures** - Create test data and fixtures
 
-### Debugging
+### Debugging (3 prompts)
 - **fix_bug** - Debug and fix bugs with analysis
+- **analyze_performance** - Debug performance bottlenecks
+- **debug_async_issue** - Fix async/concurrency issues
 
-### Refactoring
-- **refactor_code** - Refactor for readability, performance, etc.
+### Refactoring (4 prompts)
+- **refactor_code** - Refactor for quality improvements
+- **extract_function** - Extract code to functions (DRY)
+- **simplify_logic** - Simplify complex conditional logic
+- **modernize_code** - Update to modern language features
 
-### Documentation
+### Code Review (3 prompts)
+- **review_pull_request** - Comprehensive PR review
+- **security_audit** - Security vulnerability scan
+- **performance_review** - Performance optimization review
+
+### Documentation (1 prompt)
 - **add_documentation** - Generate code documentation
+
+### Architecture (3 prompts)
+- **system_design** - High-level system architecture
+- **api_design** - Comprehensive API design
+- **design_patterns** - Apply appropriate design patterns
+
+**Total: 23 high-quality templates ready to use!**
 
 ## 💾 Data Storage
 

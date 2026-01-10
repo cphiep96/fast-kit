@@ -1,0 +1,72 @@
+id: e2e_test
+category: testing
+name: Create E2E Tests
+description: Generate end-to-end tests for user workflows
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - testing
+    - e2e
+    - playwright
+    - cypress
+
+variables:
+  - name: user_workflow
+    type: string
+    description: User workflow to test
+    required: true
+
+  - name: test_tool
+    type: string
+    description: E2E testing tool
+    required: false
+    validation:
+      allowed_values:
+        - Playwright
+        - Cypress
+        - Puppeteer
+        - Selenium
+
+  - name: workflow_steps
+    type: list
+    description: Steps in the workflow
+    required: true
+
+template: |
+  # Task: Write E2E Test
+
+  ## User Workflow
+  {{user_workflow}}
+
+  {{#if test_tool}}
+  ## Testing Tool
+  {{test_tool}}
+  {{/if}}
+
+  ## Workflow Steps
+  {{#each workflow_steps}}
+  {{@index}}. {{this}}
+  {{/each}}
+
+  ## Requirements
+  1. Write end-to-end test covering the complete user workflow
+  2. Use {{#if test_tool}}{{test_tool}}{{else}}appropriate E2E framework{{/if}}
+  3. Add proper wait conditions and assertions
+  4. Handle async operations correctly
+  5. Take screenshots on failures
+  6. Test on critical user paths
+  7. Include cleanup after tests
+
+  Please provide:
+  1. Complete E2E test implementation
+  2. Test configuration
+  3. Page objects or selectors (if applicable)
+  4. Explanation of test approach
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

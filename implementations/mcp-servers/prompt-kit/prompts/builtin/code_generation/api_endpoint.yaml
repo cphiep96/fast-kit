@@ -1,0 +1,126 @@
+id: api_endpoint
+category: code_generation
+name: Create API Endpoint
+description: Generate REST or GraphQL API endpoint with proper structure
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - api
+    - endpoint
+    - rest
+    - graphql
+  model_optimized_for:
+    - claude-3.5-sonnet
+
+variables:
+  - name: endpoint_type
+    type: string
+    description: Type of endpoint
+    required: true
+    validation:
+      allowed_values:
+        - REST
+        - GraphQL
+
+  - name: method
+    type: string
+    description: HTTP method (for REST)
+    required: false
+    validation:
+      allowed_values:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+
+  - name: path
+    type: string
+    description: Endpoint path (e.g., /api/users/:id)
+    required: true
+
+  - name: description
+    type: string
+    description: What this endpoint does
+    required: true
+
+  - name: authentication
+    type: boolean
+    description: Requires authentication
+    required: false
+    default: true
+
+  - name: request_body
+    type: string
+    description: Expected request body structure
+    required: false
+
+  - name: response_structure
+    type: string
+    description: Expected response structure
+    required: false
+
+  - name: framework
+    type: string
+    description: Framework to use
+    required: false
+    validation:
+      allowed_values:
+        - express
+        - fastify
+        - nestjs
+        - next-api
+
+template: |
+  # Task: Implement API Endpoint
+
+  ## Endpoint Specification
+  - **Type**: {{endpoint_type}}
+  {{#if method}}
+  - **Method**: {{method}}
+  {{/if}}
+  - **Path**: `{{path}}`
+  - **Description**: {{description}}
+  {{#if authentication}}
+  - **Authentication**: Required ✓
+  {{/if}}
+  {{#if framework}}
+  - **Framework**: {{framework}}
+  {{/if}}
+
+  {{#if request_body}}
+  ## Request Body
+  ```json
+  {{request_body}}
+  ```
+  {{/if}}
+
+  {{#if response_structure}}
+  ## Response Structure
+  ```json
+  {{response_structure}}
+  ```
+  {{/if}}
+
+  ## Requirements
+  1. Implement the endpoint following REST/GraphQL best practices
+  2. Add proper input validation
+  3. Handle errors gracefully with appropriate status codes
+  4. {{#if authentication}}Include authentication middleware{{/if}}
+  5. Add request/response type definitions
+  6. Include proper logging
+  7. Add rate limiting if needed
+
+  Please provide:
+  1. Complete endpoint implementation
+  2. Request/response types or schemas
+  3. Error handling strategy
+  4. Example request/response
+
+settings:
+  temperature: 0.3
+  max_tokens: 3000

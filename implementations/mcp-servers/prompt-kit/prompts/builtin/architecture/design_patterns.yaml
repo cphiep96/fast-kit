@@ -1,0 +1,75 @@
+id: design_patterns
+category: architecture
+name: Apply Design Patterns
+description: Recommend and apply appropriate design patterns
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - architecture
+    - design-patterns
+    - best-practices
+
+variables:
+  - name: problem_description
+    type: string
+    description: Problem to solve
+    required: true
+
+  - name: current_code
+    type: code
+    description: Current implementation (if any)
+    required: false
+
+  - name: language
+    type: string
+    description: Programming language
+    required: true
+    validation:
+      allowed_values:
+        - typescript
+        - javascript
+        - python
+        - java
+        - csharp
+        - go
+
+template: |
+  # Task: Apply Design Patterns
+
+  ## Problem
+  {{problem_description}}
+
+  {{#if current_code}}
+  ## Current Implementation
+  ```
+  {{current_code}}
+  ```
+  {{/if}}
+
+  ## Language
+  {{language}}
+
+  ## Design Pattern Categories
+  1. **Creational** - Singleton, Factory, Builder, Prototype
+  2. **Structural** - Adapter, Decorator, Facade, Proxy
+  3. **Behavioral** - Observer, Strategy, Command, State
+
+  ## Analysis
+  Please analyze and recommend appropriate design patterns for this problem.
+
+  Please provide:
+  1. Recommended design pattern(s) with justification
+  2. Complete implementation using the pattern
+  3. UML or class diagram (text/ASCII)
+  4. Benefits of using this pattern
+  5. Trade-offs and considerations
+  6. Alternative patterns considered
+  7. Usage examples
+
+settings:
+  temperature: 0.3
+  max_tokens: 3000

@@ -1,0 +1,67 @@
+id: extract_function
+category: refactoring
+name: Extract Function
+description: Extract code into a separate function to reduce duplication
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - refactoring
+    - extract
+    - dry-principle
+
+variables:
+  - name: code
+    type: code
+    description: Code to refactor
+    required: true
+
+  - name: code_to_extract
+    type: string
+    description: Specific code section to extract (optional)
+    required: false
+
+  - name: new_function_name
+    type: string
+    description: Name for the extracted function
+    required: false
+
+template: |
+  # Task: Extract Function Refactoring
+
+  ## Original Code
+  ```
+  {{code}}
+  ```
+
+  {{#if code_to_extract}}
+  ## Code to Extract
+  {{code_to_extract}}
+  {{/if}}
+
+  {{#if new_function_name}}
+  ## Suggested Function Name
+  `{{new_function_name}}`
+  {{/if}}
+
+  ## Requirements
+  1. Identify duplicated or complex code that should be extracted
+  2. Create well-named functions with clear purposes
+  3. Ensure functions have single responsibility
+  4. Pass necessary parameters explicitly
+  5. Preserve all existing functionality
+  6. Add appropriate documentation
+  7. Improve code readability
+
+  Please provide:
+  1. Refactored code with extracted functions
+  2. List of functions extracted and their purposes
+  3. Explanation of improvements made
+  4. Before/after comparison
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

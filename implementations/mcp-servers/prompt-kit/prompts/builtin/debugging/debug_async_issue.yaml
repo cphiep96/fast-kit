@@ -1,0 +1,74 @@
+id: debug_async_issue
+category: debugging
+name: Debug Async/Concurrency Issue
+description: Debug async, promise, or concurrency issues
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - debugging
+    - async
+    - promises
+    - concurrency
+
+variables:
+  - name: code
+    type: code
+    description: Code with async issues
+    required: true
+
+  - name: issue_description
+    type: string
+    description: Description of the async problem
+    required: true
+
+  - name: language
+    type: string
+    description: Programming language
+    required: false
+    validation:
+      allowed_values:
+        - javascript
+        - typescript
+        - python
+        - rust
+        - go
+
+template: |
+  # Task: Debug Async/Concurrency Issue
+
+  ## Code with Async Issues
+  ```
+  {{code}}
+  ```
+
+  ## Issue Description
+  {{issue_description}}
+
+  {{#if language}}
+  ## Language
+  {{language}}
+  {{/if}}
+
+  ## Common Async Issues to Check
+  1. **Unhandled Promise Rejections**
+  2. **Race Conditions**
+  3. **Callback Hell / Promise Chains**
+  4. **Missing await keywords**
+  5. **Incorrect error handling in async code**
+  6. **Deadlocks or infinite waits**
+  7. **Async iteration issues**
+
+  Please provide:
+  1. Identification of async/concurrency issues
+  2. Explanation of why the issue occurs
+  3. Fixed code with proper async handling
+  4. Best practices for async code in this context
+  5. Testing recommendations for async behavior
+
+settings:
+  temperature: 0.2
+  max_tokens: 2500

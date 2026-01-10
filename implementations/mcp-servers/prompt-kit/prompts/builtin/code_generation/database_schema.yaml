@@ -1,0 +1,86 @@
+id: database_schema
+category: code_generation
+name: Create Database Schema
+description: Design database schema with tables, relationships, and constraints
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - database
+    - schema
+    - sql
+    - orm
+
+variables:
+  - name: database_type
+    type: string
+    description: Type of database
+    required: true
+    validation:
+      allowed_values:
+        - PostgreSQL
+        - MySQL
+        - SQLite
+        - MongoDB
+
+  - name: schema_purpose
+    type: string
+    description: What this schema represents
+    required: true
+
+  - name: entities
+    type: list
+    description: Main entities/tables
+    required: true
+
+  - name: use_orm
+    type: string
+    description: ORM to use
+    required: false
+    validation:
+      allowed_values:
+        - Prisma
+        - TypeORM
+        - Sequelize
+        - Mongoose
+        - none
+
+template: |
+  # Task: Design Database Schema
+
+  ## Purpose
+  {{schema_purpose}}
+
+  ## Database
+  - **Type**: {{database_type}}
+  {{#if use_orm}}
+  - **ORM**: {{use_orm}}
+  {{/if}}
+
+  ## Entities
+  {{#each entities}}
+  - **{{this.name}}**: {{this.description}}
+  {{/each}}
+
+  ## Requirements
+  1. Design a normalized database schema
+  2. Define all tables/collections with appropriate fields
+  3. Establish relationships (one-to-one, one-to-many, many-to-many)
+  4. Add proper constraints (primary keys, foreign keys, unique, not null)
+  5. Include indexes for performance
+  6. Add timestamps (created_at, updated_at)
+  7. {{#if use_orm}}Provide {{use_orm}} schema definition{{/if}}
+
+  Please provide:
+  1. Complete schema definition
+  2. Entity relationship diagram (text/ASCII)
+  3. Migration files or setup scripts
+  4. Explanation of design decisions
+  5. Sample queries for common operations
+
+settings:
+  temperature: 0.3
+  max_tokens: 3500

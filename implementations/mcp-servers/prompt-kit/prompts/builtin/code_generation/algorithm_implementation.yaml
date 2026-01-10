@@ -1,0 +1,92 @@
+id: algorithm_implementation
+category: code_generation
+name: Implement Algorithm
+description: Implement a specific algorithm with optimal complexity
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - algorithm
+    - data-structures
+    - optimization
+
+variables:
+  - name: algorithm_name
+    type: string
+    description: Name of the algorithm
+    required: true
+
+  - name: algorithm_description
+    type: string
+    description: What the algorithm should do
+    required: true
+
+  - name: language
+    type: string
+    description: Programming language
+    required: true
+    validation:
+      allowed_values:
+        - typescript
+        - python
+        - javascript
+        - rust
+        - go
+        - java
+        - cpp
+
+  - name: input_constraints
+    type: list
+    description: Input constraints and edge cases
+    required: false
+
+  - name: optimize_for
+    type: string
+    description: Optimization goal
+    required: false
+    validation:
+      allowed_values:
+        - time
+        - space
+        - both
+
+template: |
+  # Task: Implement {{algorithm_name}}
+
+  ## Description
+  {{algorithm_description}}
+
+  ## Specifications
+  - **Language**: {{language}}
+  {{#if optimize_for}}
+  - **Optimize for**: {{optimize_for}} complexity
+  {{/if}}
+
+  {{#if input_constraints}}
+  ## Input Constraints
+  {{#each input_constraints}}
+  - {{this}}
+  {{/each}}
+  {{/if}}
+
+  ## Requirements
+  1. Implement the algorithm with optimal time/space complexity
+  2. Handle all edge cases and constraints
+  3. Add clear comments explaining the approach
+  4. Include complexity analysis (Big O notation)
+  5. Ensure the code is efficient and readable
+  6. Add input validation
+
+  Please provide:
+  1. Complete algorithm implementation
+  2. Time and space complexity analysis
+  3. Step-by-step explanation of the approach
+  4. Test cases with expected outputs
+  5. Comparison with alternative approaches (if applicable)
+
+settings:
+  temperature: 0.2
+  max_tokens: 3000

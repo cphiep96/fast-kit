@@ -1,0 +1,69 @@
+id: test_fixtures
+category: testing
+name: Create Test Fixtures
+description: Generate test data and fixtures for testing
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - testing
+    - fixtures
+    - test-data
+
+variables:
+  - name: data_type
+    type: string
+    description: Type of test data needed
+    required: true
+
+  - name: schema
+    type: string
+    description: Data schema or structure
+    required: false
+
+  - name: num_examples
+    type: string
+    description: Number of examples
+    required: false
+    default: "5"
+
+  - name: include_edge_cases
+    type: boolean
+    description: Include edge case data
+    required: false
+    default: true
+
+template: |
+  # Task: Create Test Fixtures
+
+  ## Data Type
+  {{data_type}}
+
+  {{#if schema}}
+  ## Data Schema
+  ```
+  {{schema}}
+  ```
+  {{/if}}
+
+  ## Requirements
+  1. Generate {{num_examples}} realistic test data examples
+  2. Include valid data for happy path scenarios
+  3. {{#if include_edge_cases}}Include edge cases (empty, null, boundary values){{/if}}
+  4. Make data realistic and representative
+  5. Add factory functions for generating data
+  6. Include setup/teardown utilities
+  7. Document the data structure
+
+  Please provide:
+  1. Complete test fixtures
+  2. Factory functions for data generation
+  3. Helper functions for common test scenarios
+  4. Usage examples
+
+settings:
+  temperature: 0.4
+  max_tokens: 2000

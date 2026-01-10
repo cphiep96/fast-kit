@@ -1,0 +1,95 @@
+id: react_component
+category: code_generation
+name: Create React Component
+description: Generate a React component with props, state, and hooks
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - react
+    - component
+    - frontend
+    - typescript
+
+variables:
+  - name: component_name
+    type: string
+    description: Component name (PascalCase)
+    required: true
+    validation:
+      pattern: '^[A-Z][a-zA-Z0-9]*$'
+
+  - name: purpose
+    type: string
+    description: What the component does
+    required: true
+
+  - name: component_type
+    type: string
+    description: Component type
+    required: false
+    default: functional
+    validation:
+      allowed_values:
+        - functional
+        - class
+
+  - name: props
+    type: list
+    description: Component props
+    required: false
+
+  - name: state_needed
+    type: boolean
+    description: Component needs state
+    required: false
+    default: false
+
+  - name: use_typescript
+    type: boolean
+    description: Use TypeScript
+    required: false
+    default: true
+
+template: |
+  # Task: Create React Component `{{component_name}}`
+
+  ## Purpose
+  {{purpose}}
+
+  ## Specifications
+  - **Component Type**: {{component_type}}
+  {{#if use_typescript}}
+  - **Language**: TypeScript
+  {{/if}}
+  {{#if props}}
+  - **Props**:
+  {{#each props}}
+    - `{{this.name}}` ({{this.type}}): {{this.description}}
+  {{/each}}
+  {{/if}}
+  {{#if state_needed}}
+  - **State**: Component manages local state
+  {{/if}}
+
+  ## Requirements
+  1. Create a {{component_type}} React component
+  2. {{#if use_typescript}}Use TypeScript with proper type definitions{{/if}}
+  3. Follow React best practices and hooks guidelines
+  4. Add proper prop validation
+  5. Include inline comments for complex logic
+  6. Make the component reusable and maintainable
+  7. Consider accessibility (a11y)
+
+  Please provide:
+  1. Complete component implementation
+  2. {{#if use_typescript}}Type definitions for props and state{{/if}}
+  3. Usage example
+  4. Brief explanation of key decisions
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

@@ -1,0 +1,64 @@
+id: simplify_logic
+category: refactoring
+name: Simplify Complex Logic
+description: Simplify complex conditional logic and nested code
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - refactoring
+    - simplification
+    - readability
+
+variables:
+  - name: code
+    type: code
+    description: Complex code to simplify
+    required: true
+
+  - name: complexity_issue
+    type: string
+    description: What makes the code complex
+    required: false
+    validation:
+      allowed_values:
+        - nested-conditions
+        - long-function
+        - complex-loops
+        - unclear-logic
+        - too-many-parameters
+
+template: |
+  # Task: Simplify Complex Logic
+
+  ## Complex Code
+  ```
+  {{code}}
+  ```
+
+  {{#if complexity_issue}}
+  ## Complexity Issue
+  {{complexity_issue}}
+  {{/if}}
+
+  ## Requirements
+  1. Simplify the logic while preserving functionality
+  2. Reduce nesting depth (max 2-3 levels)
+  3. Use early returns to reduce complexity
+  4. Replace complex conditions with well-named functions
+  5. Break down long functions
+  6. Use guard clauses
+  7. Improve variable and function names
+
+  Please provide:
+  1. Simplified code
+  2. Explanation of simplifications made
+  3. Cyclomatic complexity before/after (if applicable)
+  4. Readability improvements
+
+settings:
+  temperature: 0.3
+  max_tokens: 2500

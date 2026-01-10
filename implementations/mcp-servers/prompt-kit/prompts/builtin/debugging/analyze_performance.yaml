@@ -1,0 +1,71 @@
+id: analyze_performance
+category: debugging
+name: Analyze Performance Issue
+description: Debug and analyze performance bottlenecks
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - debugging
+    - performance
+    - profiling
+
+variables:
+  - name: code
+    type: code
+    description: Slow code to analyze
+    required: true
+
+  - name: performance_metrics
+    type: string
+    description: Performance measurements (time, memory, etc)
+    required: false
+
+  - name: expected_performance
+    type: string
+    description: Expected performance target
+    required: false
+
+template: |
+  # Task: Analyze Performance Issue
+
+  ## Code with Performance Issues
+  ```
+  {{code}}
+  ```
+
+  {{#if performance_metrics}}
+  ## Current Performance
+  {{performance_metrics}}
+  {{/if}}
+
+  {{#if expected_performance}}
+  ## Performance Target
+  {{expected_performance}}
+  {{/if}}
+
+  ## Analysis Steps
+  1. Identify performance bottlenecks
+  2. Measure time complexity
+  3. Check for common anti-patterns:
+     - N+1 queries
+     - Unnecessary loops
+     - Blocking I/O
+     - Memory leaks
+     - Inefficient algorithms
+  4. Suggest optimizations
+
+  Please provide:
+  1. Root cause analysis of performance issues
+  2. Bottleneck identification with line numbers
+  3. Optimized code with improvements
+  4. Expected performance gains
+  5. Profiling recommendations
+  6. Monitoring suggestions
+
+settings:
+  temperature: 0.2
+  max_tokens: 2500

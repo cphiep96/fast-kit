@@ -1,0 +1,75 @@
+id: performance_review
+category: code_review
+name: Performance Review
+description: Review code for performance issues and optimizations
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - performance
+    - optimization
+    - efficiency
+
+variables:
+  - name: code
+    type: code
+    description: Code to review for performance
+    required: true
+
+  - name: performance_requirements
+    type: string
+    description: Performance requirements or concerns
+    required: false
+
+template: |
+  # Task: Performance Review
+
+  ## Code to Review
+  ```
+  {{code}}
+  ```
+
+  {{#if performance_requirements}}
+  ## Performance Requirements
+  {{performance_requirements}}
+  {{/if}}
+
+  ## Performance Checklist
+
+  ### Algorithm Efficiency
+  - Time complexity (Big O)
+  - Space complexity
+  - Optimal algorithm choice
+
+  ### Common Issues
+  - N+1 query problems
+  - Unnecessary loops
+  - Inefficient data structures
+  - Memory leaks
+  - Blocking operations
+  - Missing caching
+  - Redundant computations
+
+  ### Best Practices
+  - Lazy loading
+  - Pagination for large datasets
+  - Database query optimization
+  - Proper indexing
+  - Connection pooling
+  - Async operations where applicable
+
+  Please provide:
+  1. Performance issues identified
+  2. Impact assessment for each issue
+  3. Time/space complexity analysis
+  4. Specific optimization recommendations
+  5. Expected performance improvements
+  6. Code examples for fixes
+  7. Profiling recommendations (if needed)
+
+settings:
+  temperature: 0.2
+  max_tokens: 2500

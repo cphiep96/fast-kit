@@ -1,0 +1,88 @@
+id: system_design
+category: architecture
+name: System Design
+description: Design high-level system architecture for a project
+version: 1.0.0
+
+metadata:
+  author: fast-kit
+  created_at: '2026-01-10'
+  updated_at: '2026-01-10'
+  tags:
+    - architecture
+    - system-design
+    - high-level
+
+variables:
+  - name: project_description
+    type: string
+    description: What the system should do
+    required: true
+
+  - name: requirements
+    type: list
+    description: Key requirements
+    required: true
+
+  - name: scale
+    type: string
+    description: Expected scale
+    required: false
+    validation:
+      allowed_values:
+        - small
+        - medium
+        - large
+        - massive
+
+  - name: constraints
+    type: list
+    description: Technical or business constraints
+    required: false
+
+template: |
+  # Task: System Design
+
+  ## Project
+  {{project_description}}
+
+  ## Requirements
+  {{#each requirements}}
+  - {{this}}
+  {{/each}}
+
+  {{#if scale}}
+  ## Scale
+  {{scale}} scale system
+  {{/if}}
+
+  {{#if constraints}}
+  ## Constraints
+  {{#each constraints}}
+  - {{this}}
+  {{/each}}
+  {{/if}}
+
+  ## Design Considerations
+  1. **Architecture Pattern** - Microservices, Monolith, Serverless, etc.
+  2. **Data Storage** - Database choices, caching strategy
+  3. **Scalability** - Horizontal/vertical scaling approach
+  4. **Availability** - High availability, fault tolerance
+  5. **Security** - Authentication, authorization, data protection
+  6. **Performance** - Latency requirements, optimization
+  7. **Integration** - APIs, third-party services
+  8. **Deployment** - CI/CD, infrastructure
+
+  Please provide:
+  1. High-level architecture diagram (ASCII/text)
+  2. Component descriptions and responsibilities
+  3. Data flow and communication patterns
+  4. Technology stack recommendations
+  5. Scalability strategy
+  6. Security considerations
+  7. Trade-offs and design decisions
+  8. Migration/deployment strategy
+
+settings:
+  temperature: 0.3
+  max_tokens: 3500
