@@ -1,0 +1,141 @@
+# Fast-Kit: Hệ Thống Tăng Tốc Code với AI
+
+> Bộ công cụ toàn diện giúp tăng tốc phát triển phần mềm với Claude Code, MCP Servers và AI-powered workflows
+
+## 📦 Giới Thiệu
+
+Fast-Kit là một hệ sinh thái công cụ được thiết kế để tối ưu hóa quy trình phát triển phần mềm thông qua việc tích hợp Claude Code, Vibe Kanban và các MCP servers chuyên biệt.
+
+## 🎯 Phân Cấp Sản Phẩm
+
+### 🟢 Gói Tối Thiểu (Essential)
+Phù hợp cho cá nhân và team nhỏ mới bắt đầu
+
+1. **SpecKit** - Quản lý specifications và requirements
+2. **ContextKit** - Quản lý context và kiến thức dự án
+3. **PromptKit** - Thư viện prompts và templates
+4. **Claude Code** - Core AI coding assistant
+5. **Vibe Kanban** - Task và project management
+
+### 🔵 Gói Cao Cấp (Professional)
+Cho teams và organizations cần scale
+
+6. **RepoContextKit** - Deep repository analysis và context
+7. **QualityKit** - Code quality, testing và review automation
+8. **ExecutionKit** - CI/CD integration và deployment workflows
+
+## 📁 Cấu Trúc Dự Án
+
+```
+fast-kit/
+├── specs/                      # Specifications cho từng kit
+│   ├── essential/             # Specs cho gói tối thiểu
+│   │   ├── spec-kit.md
+│   │   ├── context-kit.md
+│   │   └── prompt-kit.md
+│   └── professional/          # Specs cho gói cao cấp
+│       ├── repo-context-kit.md
+│       ├── quality-kit.md
+│       └── execution-kit.md
+├── implementations/           # Code implementations
+│   ├── mcp-servers/          # MCP server implementations
+│   └── integrations/         # Integration code
+├── templates/                 # Templates và boilerplates
+│   ├── notion/               # Notion templates
+│   ├── prompts/              # Prompt templates
+│   └── workflows/            # Workflow templates
+├── docs/                      # Documentation
+│   ├── architecture.md       # System architecture
+│   ├── getting-started.md    # Quick start guide
+│   └── use-cases.md          # Use cases và examples
+└── packages/                  # Package distribution
+    ├── essential/            # Essential package
+    └── professional/         # Professional package
+```
+
+## 🚀 Roadmap Sản Phẩm
+
+### Phase 1: Foundation (Hiện tại)
+- ✅ Thiết kế kiến trúc tổng thể
+- 🔄 Tạo specifications chi tiết
+- 🔄 Setup cấu trúc dự án
+
+### Phase 2: Essential Package
+- Implement SpecKit MCP server
+- Implement ContextKit MCP server
+- Implement PromptKit MCP server
+- Tạo Notion templates
+- Documentation và examples
+
+### Phase 3: Professional Package
+- Implement RepoContextKit
+- Implement QualityKit
+- Implement ExecutionKit
+- Advanced workflows và automation
+
+### Phase 4: SaaS Platform
+- Web dashboard
+- Cloud hosting cho MCP servers
+- Team collaboration features
+- Analytics và insights
+
+## 💰 Mô Hình Kinh Doanh
+
+### 1. **Notion Templates + Repo** (Giai đoạn 1)
+- Bán templates qua Gumroad/Lemon Squeezy
+- GitHub repo với docs và examples
+- One-time purchase: $29-$49 (Essential), $99-$149 (Professional)
+
+### 2. **Self-Hosted MCP Servers** (Giai đoạn 2)
+- Open-source với premium features
+- Freemium model với paid tiers
+- Monthly: $15-$25 (Essential), $49-$79 (Professional)
+
+### 3. **SaaS Platform** (Giai đoạn 3)
+- Cloud-hosted solution
+- Team plans và enterprise
+- Monthly: $29-$49/user (Essential), $99-$149/user (Professional)
+
+## 🎨 Tính Năng Chính
+
+### Essential Package
+- Spec templates và management
+- Context tracking và knowledge base
+- Prompt library với 100+ templates
+- Task management với Vibe Kanban
+- Claude Code integration guides
+
+### Professional Package
+- Advanced repository analysis
+- Automated code review
+- Quality metrics và reports
+- CI/CD workflow templates
+- Multi-repo management
+- Team collaboration tools
+
+## 🛠️ Tech Stack
+
+- **MCP Servers**: TypeScript/Node.js
+- **Frontend** (SaaS): Next.js + React
+- **Backend** (SaaS): Node.js + PostgreSQL
+- **Integration**: Claude Code + Vibe Kanban
+- **Docs**: Notion + MDX
+
+## 📚 Documentation
+
+- [Architecture Overview](./docs/architecture.md)
+- [Getting Started Guide](./docs/getting-started.md)
+- [Specification Details](./specs/README.md)
+- [Use Cases & Examples](./docs/use-cases.md)
+
+## 🤝 Contributing
+
+Đang trong giai đoạn phát triển. Stay tuned!
+
+## 📄 License
+
+MIT License (to be updated)
+
+---
+
+**Built with ❤️ for developers who want to code faster with AI**
