@@ -146,7 +146,38 @@ fast-kit/
 - ✅ Create custom prompts
 - ✅ Token counting
 
-[**→ Get Started in 5 Minutes**](./QUICK_START.md) | [**→ Full Vietnamese Guide**](./docs/getting-started-vi.md)
+## 🚀 Quick Setup (1-2 Minutes!)
+
+### ⚡ Easiest: NPM Installation (Recommended)
+
+```bash
+# Install CLI globally
+npm install -g @fast-kit/cli
+
+# One-command setup
+fast-kit setup
+```
+
+**Done!** The CLI auto-installs servers and configures Claude Code. No repo clone needed!
+
+### 🔧 Alternative: Local Setup Scripts
+
+If you prefer to build from source:
+
+**Windows:**
+```powershell
+cd d:\project\fast-kit
+.\scripts\setup.ps1
+```
+
+**macOS/Linux:**
+```bash
+cd /path/to/fast-kit
+chmod +x scripts/setup.sh
+./scripts/setup.sh
+```
+
+[**→ Get Started in 2 Minutes**](./QUICK_START.md) | [**→ Full Vietnamese Guide**](./docs/getting-started-vi.md)
 
 ## 📚 Documentation
 

@@ -1,10 +1,35 @@
 # Fast-Kit - Quick Start Guide
 
-> Hướng dẫn nhanh 5 phút để bắt đầu với Fast-Kit
+> Hướng dẫn nhanh 2 phút để bắt đầu với Fast-Kit
 
-## 🚀 Setup Nhanh (5 phút)
+## 🚀 Setup Siêu Nhanh (2 phút)
 
-### 1. Build Servers
+### ⚡ Cách 1: Tự Động (Khuyến nghị)
+
+**Windows:**
+```powershell
+cd d:\project\fast-kit
+.\scripts\setup.ps1
+```
+
+**macOS/Linux:**
+```bash
+cd /path/to/fast-kit
+chmod +x scripts/setup.sh
+./scripts/setup.sh
+```
+
+Script sẽ tự động:
+- ✅ Build SpecKit & PromptKit
+- ✅ Tạo/cập nhật Claude config
+- ✅ Verify mọi thứ hoạt động
+
+### 🔧 Cách 2: Manual (Nếu muốn tự setup)
+
+<details>
+<summary>Click để xem hướng dẫn manual</summary>
+
+**1. Build Servers:**
 
 ```bash
 cd d:\project\fast-kit\implementations\mcp-servers\spec-kit
@@ -14,9 +39,9 @@ cd ..\prompt-kit
 npm install && npm run build
 ```
 
-### 2. Configure Claude Code
+**2. Configure Claude Code:**
 
-Mở `%APPDATA%\claude\config.json` và thêm:
+Mở `%APPDATA%\claude\config.json` (Windows) hoặc `~/.config/claude/config.json` (macOS/Linux) và thêm:
 
 ```json
 {
@@ -33,11 +58,27 @@ Mở `%APPDATA%\claude\config.json` và thêm:
 }
 ```
 
+</details>
+
 ### 3. Restart & Test
 
 Restart Claude Code, sau đó test:
 ```
 List all prompts
+```
+
+### 🔍 Validate Setup
+
+Kiểm tra setup có thành công không:
+
+**Windows:**
+```powershell
+.\scripts\validate.ps1
+```
+
+**macOS/Linux:**
+```bash
+./scripts/validate.sh
 ```
 
 ## ✨ First Examples
